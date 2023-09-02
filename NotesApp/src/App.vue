@@ -2,7 +2,28 @@
 import {ref} from "vue";
 
 const showModel = ref(false)
+const newNote = ref("")
+const notes = ref([])
+const errorMessage = ref("")
 
+function getRandomColor() {
+  return "hsl(" + Math.random() * 360 + ", 100%, 75%)";
+}
+
+const addNote = () => {
+  if (newNote.value.trim.length < 10) {
+    return errorMessage.value = "Note needs to be 10 character or more"
+  }
+  notes.value.push({
+    id: Math.floor(Math.random() * 1000000),
+    text: newNote.value,
+    date: new Date(),
+    backgroundColor: getRandomColor()
+  })
+  showModel.value = false;
+  newNote.value = ""
+  errorMessage.value = ""
+}
 
 </script>
 
@@ -10,8 +31,9 @@ const showModel = ref(false)
   <main>
     <div v-if="showModel" class="overlay">
       <div class="model">
-        <textarea name="note" id="note" cols="30" rows="10"></textarea>
-        <button>Add Note</button>
+        <textarea v-model="newNote" name="note" id="note" cols="30" rows="10"></textarea>
+        <p v-if="errorMessage">{{ errorMessage }}</p>
+        <button @click="addNote">Add Note</button>
         <button @click="showModel=false" class="close">Close</button>
       </div>
     </div>
@@ -21,14 +43,11 @@ const showModel = ref(false)
         <button @click="showModel=true">+</button>
       </header>
       <div class="cards-container">
-        <div class="card">
-          <p class="main-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, tempore, enim alias rem error ratione sunt a sapiente impedit nulla consequuntur iusto nam suscipit ea odio id! Rerum, et itaque.</p>
-          <p class="date">02/12/1212</p>
+        <div v-for="note in notes" :key="note.id" class="card" :style="{backgroundColor: note.backgroundColor}">
+          <p class="main-text">{{ note.text }}</p>
+          <p class="date">{{ note.date.toLocaleDateString("en-US") }}</p>
         </div>
-        <div class="card">
-          <p class="main-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, tempore, enim alias rem error ratione sunt a sapiente impedit nulla consequuntur iusto nam suscipit ea odio id! Rerum, et itaque.</p>
-          <p class="date">02/12/1212</p>
-        </div>
+
       </div>
     </div>
   </main>
@@ -122,5 +141,8 @@ const showModel = ref(false)
   .model .close{
     background-color: red;
     margin-top: 7px;
+  }
+  .model p{
+    color: red;
   }
 </style>
