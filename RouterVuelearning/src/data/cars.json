@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "name": "Chevy",
+        "price": 15000,
+        "year": 2015,
+        "contact": {
+            "dealer": "Sabbir",
+            "nunmber": "111-111-111"
+        }
+    },
+    {
+        "id": 2,
+        "name": "Bentley",
+        "price": 215000,
+        "year": 2021,
+        "contact": {
+            "dealer": "Sudiptya",
+            "nunmber": "222-222-222"
+        }
+    },
+    {
+        "id": 3,
+        "name": "Ford",
+        "price": 5000,
+        "year": 2025,
+        "contact": {
+            "dealer": "Fardin",
+            "nunmber": "333-333-333"
+        }
+    },
+    {
+        "id": 4,
+        "name": "Toyota",
+        "price": 150000,
+        "year": 2010,
+        "contact": {
+            "dealer": "Durjoy",
+            "nunmber": "444-444-444"
+        }
+    },
+    {
+        "id": 5,
+        "name": "Audi",
+        "price": 1500000,
+        "year": 2022,
+        "contact": {
+            "dealer": "Shakib",
+            "nunmber": "555-555-555"
+        }
+    }
+]
