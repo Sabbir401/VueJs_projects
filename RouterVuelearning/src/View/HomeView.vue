@@ -7,9 +7,7 @@
     <div>
         <h1>Home view</h1>
         <div class="cars">
-            <RouterLink :to="`/cars/${car.id}`" v-for="car in cars" :key="car.id" href="">
-                {{ car.name }}
-            </RouterLink>
+            <RouterLink :to="`/cars/${car.id}`" v-for="car in cars" :key="car.id" href="">{{ car.name }}</RouterLink>
         </div>
     </div>
 </template>
