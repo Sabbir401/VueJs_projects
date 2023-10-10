@@ -18,7 +18,7 @@ const router = createRouter({
         },
         path: "",
         name: "car",
-        component: ""
+        component: "",
     ]
 })
 
